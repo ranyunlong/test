@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="showModal()">显示</button>
+    <button onclick="closeModal()">关闭</button>
+    <button onclick="removeShowEvent()">移除显示事件监听</button>
+    <script src="modal.js"></script>
+    <script>
+        const modal = new Modal();
+        modal.on('cancel', (e) => {
+            console.log(e)
+        })
+
+        modal.on('ok', (e) => {
+            console.log(e)
+        })
+        
+        modal.on('close', (e) => {
+            console.log(e)
+        })
+
+
+        const showHandle = (e) => {
+            console.log(e)
+        }
+
+        modal.on('show', showHandle)
+
+
+
+
+        function showModal() {
+            modal.show();
+        }
+
+        function closeModal() {
+            modal.close();
+        }
+
+        function removeShowEvent() {
+            modal.off('show', showHandle)
+        }
+    </script>
+</body>
+</html>
